@@ -1,0 +1,145 @@
+/* === RESET / BASE === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none; /* para ver bordas */
+}
+
+/* === VARIAVEIS === */
+:root {
+    --cor-botao: #333;
+}
+
+/* === CONTAINER PRINCIPAL === */
+.container {
+    margin: auto 500px;
+}
+
+/* === MAIN === */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* === CORPO DA PAGINA === */
+body {
+    font-family: sans-serif;
+    background-color: #f0f0f0;
+    padding: 40px 16px;
+}
+
+/* === TITULO === */
+h1 {
+    margin-bottom: 24px;
+    text-align: center;
+    font-size: 28px;
+    color: #333;
+}
+
+/* === CAMPO PARA DIGITACAO === */
+input {
+    padding: 10px 14px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+input:focus {
+    border-color: #555;
+}
+
+/* === ADICIONAR NOVA TASK === */
+.add-task {
+    display: flex;
+    flex-direction: row;
+}
+
+/* === BOTOES === */
+.btn {
+    padding: 10px 18px;
+    font-size: 16px;
+    margin-left: 8px;
+    background-color: var(--cor-botao);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: #555;
+}
+.btn-rmv {
+    background-color: var(--cor-botao);
+}
+.btn-rmv:hover {
+    background-color: red;
+}
+.btn-cmp {
+    background-color: var(--cor-botao);
+}
+.btn-cmp:hover {
+    background-color: green;
+}
+
+/* === LISTA DE TAREFAS === */
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 24px;
+    width: 100%;
+}
+.item {
+    background-color: white;
+    border-bottom: 4px solid #ccc;
+    border-radius: 5px;
+    padding: 12px;
+    margin-bottom: 5px;
+    width: 100%;
+}
+.item-div0 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.item-div1 {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 20px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    width: 100%;
+}
+.item-div2 {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    visibility: hidden;
+}
+.item:hover .item-div2 {
+    visibility: visible;
+}
+.item-btn {
+    color: white;
+    border: none;
+    padding: 6px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 16px;
+    max-height: fit-content;
+}
+
+/* === ESTADO CONCLUIDO === */
+.task-cmp {
+    text-decoration: line-through;
+    color: grey;
+}
