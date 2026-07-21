@@ -36,6 +36,7 @@ class Task {
     complete() {
         this.completed = !this.completed;
         domCompleteTask(this.item);
+        saveTasks();
     }
 
     remove() {
@@ -44,6 +45,7 @@ class Task {
 
         task_list.splice(index, 1);
         this.item.remove();
+        saveTasks();
     }
 }
 
@@ -92,6 +94,25 @@ function domCompleteTask(item) {
 function addTask() {
     let task = new Task(input.value);
     input.value = '';
+    saveTasks();
+}
+
+function saveTasks() {
+    const data = task_list.map(task => ({
+        text: task.item.querySelector('p').textContent,
+        completed: task.completed
+    }));
+    localStorage.setItem('tasks', JSON.stringify(data));
+}
+
+function loadTasks() {
+    const data = JSON.parse(localStorage.getItem('tasks')) || [];
+    data.forEach(item => {
+        const task = new Task(item.text);
+        if (item.completed) {
+            task.complete();
+        }
+    });
 }
 
 button.addEventListener('click', function () {
@@ -106,3 +127,5 @@ input.addEventListener('keydown', function(evt) {
         addTask();
     }
 });
+
+loadTasks();
